@@ -20,7 +20,8 @@ let url = 'https://63c27ec1b0c286fbe5ee8771.mockapi.io/FinalJavaScript/ShopIsa/'
                 /*body+=`<tr><td>${data[i].id}</td><td>${data[i].producto}</td><td>${data[i].precio}</td><td>${data[i].img}</td><td>${data[i].descrip}<td>${data[i].categoria}<td>${data[i].cantidad}<td>${data[i].oferta}</td><td>${data[i].descuento}</td></td></td></td></tr>`*/
 
                 
-                body+=`<div class="card col-lg-4 id="${data[i].id}">`
+                /*body+=`<div class="card col-lg-4 id="${data[i].id}">`  */
+                body+=`<div class="card" id=productos-${data[i].id}>`
                 body+=`<div class="container-img">`
                 
                 body+=`<img src="${data[i].img}" width=115>`
@@ -28,7 +29,7 @@ let url = 'https://63c27ec1b0c286fbe5ee8771.mockapi.io/FinalJavaScript/ShopIsa/'
                 body+=`<h2>${data[i].descrip}</h2><br>`
                 
                 body+=`<h2>${data[i].precio}</h2><br>`
-                body+=`<button>Agregar al Carrito</button>`
+                body+=`<button id="boton-${data[i].id}"class="boton-card">Agregar al Carrito</button>`
                 body+=`</div>`
                 console.log(body)
                 

@@ -57,6 +57,19 @@ h1 {
     font-size: 50px;
     font-family: 'Kalam' ;
 }
+
+
+h2 {
+  
+
+
+  
+  font-weight: 700;
+  font-size: 50px;
+  text-align: center;
+ 
+}
+
 #boton-carrito {
     border: none;
     color: rgb(225, 196, 65);
@@ -692,4 +705,11 @@ img {
   
 } 
 
- 
+.col-95 h4 {
+  width: 200px;
+  text-align: center;
+  margin: auto;
+  color: orange;
+  padding-top: 20px;
+  position: relative;
+}

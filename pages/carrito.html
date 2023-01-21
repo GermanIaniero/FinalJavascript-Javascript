@@ -7,14 +7,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shop Products</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-  <link rel="stylesheet" type="text/css" href="lib/sweet-alert.css">
+  <!--<link rel="stylesheet" type="text/css" href="lib/sweet-alert.css"> -->
 
-
+  <!--<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>-->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- Demo styles -->
+
+
   <style>
+    html,
     body {
+      position: relative;
+      height: 100%;
+    }
+
+    body {
+      /*background: #eee; */
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
+      padding: 0;
+    }
+
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .topnav {
@@ -77,166 +126,64 @@
   </style>
 
   <script src="https://kit.fontawesome.com/df59baf6b8.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
-
-
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <!--<link href="../css/style.css" type="text/css"> -->
 
 
 </head>
 
 <!--nav -->
-
-<div class="topnav" id="myTopnav">
-  
-  <a href="index.html" class="active">Home</a>
-  <a href="#">Productos</a>
-  <a href="carrito.html">Carrito</a>
-  <a href="#">Contacto</a>
-  <div class="animation start-home"></div>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
-  </a>
-</div>
-
-<script>
-  function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-      x.className += " responsive";
-    } else {
-      x.className = "topnav";
-    }
-  }
-</script>
 <header>
-
   <h1 id="titulo" class="titulo">Shop Isa y Jose</h1>
- <!-- <button id="boton-carrito"><i class="fas fa-shopping-cart"></i><span id="contadorCarrito">0</span></button> -->
-
   <a href="https://api.whatsapp.com/send?phone=5493512404281" class="btn-wsp" target="_blank">
     <i class="fa fa-whatsapp icono"></i>
   </a>
-
-
-
-
-
-
-
-
 </header>
 
-<script>
-  const progressBar = document.querySelector("#progressBar");
-  let totalPageHeight = document.body.scrollHeight - window.innerHeight;
-  window.onscroll = () => {
-    let newProgressHeight = (window.pageYOffset / totalPageHeight) * 100;
-    progressBar.style.height = `${newProgressHeight}%`;
-    progressBar.style.opacity = `${newProgressHeight}%`;
-  };
-</script>
-
-
-<a id="darkmode" href="javascript:void(0)">Modo oscuro</a>
-
-
-
-
-<div id="progressBar"></div>
-<div id="progressBarContainer"></div>
-
-
-
-
-<div id="titulo"></div>
-<div class="container"></div>
-<!--<button id="buscar">Buscar Producto</button> -->
-
-
-
-
-
-
-
-
-
-<!--codigo nuevo  -->
-<!-- Link Swiper's CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
-
-<!-- Demo styles -->
-<style>
-  html,
-  body {
-    position: relative;
-    height: 100%;
-  }
-
-  body {
-    /*background: #eee; */
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    color: #000;
-    margin: 0;
-    padding: 0;
-  }
-
-  .swiper {
-    width: 100%;
-    height: 100%;
-  }
-
-  .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-
-    /* Center slide text vertically */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-  }
-
-  .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-</style>
-
-
-</div>
-</div>
-
-
-</main>
-
-
-</head>
 <body>
-    <a href="../index.html">Volver Pagina Principal</a>
+
+  <div class="topnav" id="myTopnav">
+
+    <a href="/index.html" class="active">Home</a>
+    <a href="/pages/productos2.html">Productos</a>
+    <a href="/pages/carrito.html">Carrito</a>
+    <a href="/pages/contacto.html">Contacto</a>
+    <div class="animation start-home"></div>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <script>
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+    }
+  </script>
+
+  
+    <a href="/pages/productos2.html">Volver a los Productos</a>
     <button id="borrar-productos">BORRAR TODO EL CARRITO</button>
 
-    <div class="container" id="carrito">
-    <div class="producto">
+    <div class="carrito-contenedor">
 
-    </div> 
     </div>
     
-    <script src="../script/carrito.js"></script>
+    <script src="../script/productos2.js"></script>
+    <script src="../script/productos3.js"></script>
 
     <button class="boton-agregar" onclick="HacerClick()">Pagar</button>
 
@@ -269,11 +216,11 @@
   <!--codigo nuevo  -->
 
 
-  <script defer src="../script/articulos.js"></script>
+  <!--<script defer src="../script/articulos.js"></script> -->
   <script defer src="../script/cards.js"></script>
-  <script defer src="../script/index.js"></script>
-  <script defer src="../script/app.js"></script>
-  <script defer src="../script/modal.js"></script>
+  <!--<script defer src="../script/index.js"></script> -->
+  <!--<script defer src="../script/app.js"></script>
+  <script defer src="../script/modal.js"></script>-->
   <script src="../script/darkmode.js"></script>
 </body>
 
