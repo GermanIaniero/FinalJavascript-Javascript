@@ -105,3 +105,15 @@ aniadirAlCarrito(stockProductos)
 
 const productosElegidos = JSON.parse(localStorage.getItem("carrito"))
 carrito = productosElegidos || []
+
+
+
+
+function HacerClick() {
+    swal({
+      title: "¿Desea continuar con el pago?",
+      text: "Verifique antes de pagar",
+      icon: "info",
+      button: "Entendido"
+    }); 
+  }
