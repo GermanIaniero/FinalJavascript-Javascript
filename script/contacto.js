@@ -33,9 +33,6 @@ form.addEventListener("submit", e=>{
     }
 })
 
-
-
-
   function limpiarFormulario() {
     document.getElementById("miForm").reset();
   }

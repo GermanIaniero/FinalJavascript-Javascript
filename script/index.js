@@ -1,38 +1,3 @@
-/*console.log(document)
-
-const tituloPrincipal = document.getElementById("titulo-principal")
-console.log(tituloPrincipal)
-console.log(typeof tituloPrincipal)
-
-const containers = document.getElementsByClassName("container")
-console.log(container)
-
-const div = document.getElementsByTagName("li")
-console.log(div)
-
-const tituloQuerySelector = document.querySelector("#titulo-principal")
-
-const containerQuerySelector = document.querySelectorAll(".container")
-const divQuerySelector = document.querySelectorAll("div")
-
-console.log(tituloQuerySelector)
-console.log(containerQuerySelector)
-console.log(divQuerySelector)
-
-
-console.log(document)
-
-const container = document.querySelector(".container")
-
-const card = document.createElement("div")
-
-card.className = "tarjeta"
-
-card.textContent = "stockProductos"
-
-console.log(card) */
-
-
   /*nav */
   function myFunction() {
     var x = document.getElementById("myTopnav");
@@ -45,6 +10,7 @@ console.log(card) */
 
   /*Swipper */
 
+  
   var swiper = new Swiper(".mySwiper", {
     spaceBetween: 30,
     centeredSlides: true,
@@ -63,8 +29,18 @@ console.log(card) */
   });
 
 
-  const btn_darkmode = document.getElementById('darkmode');
-  btn_darkmode.addEventListener('click', function(){
+ const btn = document.querySelector(".dark");
+  const currentTheme = localStorage.getItem("theme");
+  if (currentTheme == "dark") {
+    document.body.classList.add("dark-theme");
+  }
   
-      document.body.classList.toggle('dark');
+  btn.addEventListener("click", function () {
+    document.body.classList.toggle("dark-theme");
+  
+    let theme = "light";
+    if (document.body.classList.contains("dark-theme")) {
+      theme = "dark";
+    }
+    localStorage.setItem("theme", theme);
   });
