@@ -13,36 +13,39 @@ function compare( a, b ) {
     return 0;
 }
 
-function cardsHtml ( array, contenedor, filtrarOferta ) {
-
-    
-    array.map( ( array ) => {
+async function cardsHtml ( contenedor, filtrarOferta ) {
+    let  listaProductos =  await getProductos();
+    console.log(listaProductos)
+    listaProductos.forEach(producto => {
+        
         const card = document.createElement("div")
         /*card.className = "card" */
-        card.className = "card col-lg-4"
-        card.id = array.id
+        card.className = "card col-md-2 col-lg-2 col-xl-2 mx-auto mb-4"
+        card.id = producto.id
         card.innerHTML = `
             <div class="container-img">
-                <img src=${array.img} alt=${array.descrip}>
+                <img src=${producto.img} alt=${producto.descrip}>
             </div>
             <h2>
-                ${array.descrip}
+                ${producto.descrip}
             </h2><br/>
             <h2>
-                ${array.oferta?array.precio-(array.precio*(descuento%100)):array.precio}
+                ${producto.oferta?producto.precio-(producto.precio*(descuento%100)):producto.precio}
             </h2>
             <button>Agregar al Carrito</button>
         `
         contenedor.appendChild(card)
-    })    
+    });    
+
+    console.log("lista de producto cargada")  
 }
 
 // no va esto
 
 /*const contenedor = document.querySelector(".container") */
 const contenedor = document.querySelector(".list-product")
-const listaProductos =stockProductos.slice().filter(stockProductos => stockProductos.oferta === mostrarOfertas);
-listaProductos.sort(compare)
+//const listaProductosOferta =listaProductos.filter((stockProductos => stockProductos.oferta ));
+//listaProductos.sort(compare)
 
 if(mostrarOfertas){
     document.getElementById('titulo').innerHTML="Mostrando Ofertas"
@@ -50,7 +53,7 @@ if(mostrarOfertas){
     document.getElementById('titulo').innerHTML="Mostrando Productos sin Ofertas"
 }
 
-cardsHtml(listaProductos,contenedor,mostrarOfertas)
+cardsHtml(contenedor,mostrarOfertas)
 
 /*function buscarProducto(){
     let productoBuscado = prompt("Ingrese el nombre del producto a buscar");

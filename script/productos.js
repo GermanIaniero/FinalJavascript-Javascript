@@ -6,8 +6,9 @@ fetch("https://rickandmortyapi.com/api/character/")
 
 /* metodo get */
 
-const personajesHtml = ( array ) => {
-    const arrayReducido = array.reduce(( acc, elemento) => {
+const productosHtml = () => {
+    const productos = getProductos()
+    const arrayReducido = productos.reduce((acc, elemento) => {
         return acc + `
         <p>
             ${elemento.descrip}
@@ -18,27 +19,31 @@ const personajesHtml = ( array ) => {
     document.querySelector(".contenedorpro").innerHTML = arrayReducido
 }
 
+async function getProductos() {
+    const repuesta = await fetch("https://63c27ec1b0c286fbe5ee8771.mockapi.io/FinalJavaScript/ShopIsa")
+    if (!repuesta.ok) {
+        throw new Error(`HTTP error! status: ${repuesta.status}`);
+    }
+    let data = await repuesta.json()
+    console.log(data)
+    return  data;
+}
+
+/* verify 
+
 fetch("https://63c27ec1b0c286fbe5ee8771.mockapi.io/FinalJavaScript/ShopIsa")
-.then(( respuesta ) => respuesta.json())
-.then(( data ) => {
-    const array = data.results // puedo recorrer la respuesta y guardar en variables la información que precise
-    console.log(array)
-    personajesHtml(data.results)
-})
-.catch((error) => console.log("malio sal"))
+    .then(res => res.json())
+    .then(data => console.log(data))
+    .catch(() => console.log("error"))
+*/
 
 
 
-
-fetch("https://63c27ec1b0c286fbe5ee8771.mockapi.io/FinalJavaScript/ShopIsa")
-.then( res => res.json())
-.then( data => console.log(data))
-.catch(() => console.log("error"))
 
 
 /* metodo post */
 
-const formProductos = document.querySelector("#form-productos")
+let formProductos = document.querySelector("#form-productos")
 const inputProducto = document.querySelector("#input-producto")
 const inputPrecio = document.querySelector("#input-precio")
 const inputImg = document.querySelector("#input-img")
@@ -48,33 +53,36 @@ const inputCantidad = document.querySelector("#input-cantidad")
 const inputOferta = document.querySelector("#input-oferta")
 const inputDescuento = document.querySelector("#input-descuento")
 
-formProductos.onsubmit = (e) => {
+formProductos.addEventListener('onsubmit', (event) => {
     e.preventDefault()
 
     fetch("https://63c27ec1b0c286fbe5ee8771.mockapi.io/FinalJavaScript/ShopIsa", {
-    method: "POST",
-    body: JSON.stringify({
-        Img: inputImg.value,
-        Precio: inputPrecio.value,
-        Producto: inputProducto.value,
-        Descrip: inputDescrip.value,
-        Categoria: inputCategoria.value,
-        Cantidad: inputCantidad.value,
-        Oferta: inputOferta.value,
-        Descuento: inputDescuento.value
-    }),
-    headers: {
-        "Content-Type":"application/json"
-    }
+        method: "POST",
+        body: JSON.stringify({
+            Img: inputImg.value,
+            Precio: inputPrecio.value,
+            Producto: inputProducto.value,
+            Descrip: inputDescrip.value,
+            Categoria: inputCategoria.value,
+            Cantidad: inputCantidad.value,
+            Oferta: inputOferta.value,
+            Descuento: inputDescuento.value
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
     })
-    .then( res => res.json())
-    .then( data => console.log(data))
-}
+    .then(res => res.json())
+    .then(data => console.log(data))
+});
+
+
 
 
 /* Put y patch */
 
-    fetch( `https://63c27ec1b0c286fbe5ee8771.mockapi.io/FinalJavaScript/ShopIsa/${id}`, {
+async function updateProducto(id) {
+    fetch(`https://63c27ec1b0c286fbe5ee8771.mockapi.io/FinalJavaScript/ShopIsa/${id}`, {
         method: "PUT",
         body: JSON.stringify({
             Img: Img,
@@ -87,33 +95,38 @@ formProductos.onsubmit = (e) => {
             Descuento: Descuento
         }),
         headers: {
-            "Content-Type":"application/json"
+            "Content-Type": "application/json"
         }
     })
+
+
     .then((res) => res.json())
     .then((data) => console.log(data))
     .catch(() => {
         console.log("No se encontro registro para modificar, vuelva a intentarlo")
     })
-
+}
 
 
 /* BUSCAR A TRAVÉS DE UNA API */
-const formProductos = document.querySelector("#form-busqueda")
-const inputProductos = document.querySelector("#input-busqueda")
 
-formProductos.onsubmit = (e) => {
+const inputProductos = document.querySelector("#input-busqueda")
+// verify const formProductos = document.querySelector("#form-busqueda")
+/* verificar
+formProductos.onsubmit.value = (e) => {
+
     e.preventDefault()
     peticion(inputProductos.value)    
 }
 
-function peticion ( busqueda ) {
+*/
+function peticion(busqueda) {
     fetch(`https://63c27ec1b0c286fbe5ee8771.mockapi.io/FinalJavaScript/ShopIsa/${busqueda}/`)
-    .then( res => res.json())
-    .then( data => {
-        alert(`El nombre del producto buscado es: ${data.descrip}`)        
+    .then(res => res.json())
+    .then(data => {
+        alert(`El nombre del producto buscado es: ${data.descrip}`)
     })
-    .catch(() => console.log("no se encontro")) 
+    .catch(() => console.log("no se encontro"))    
 }
 
 
@@ -121,7 +134,7 @@ function peticion ( busqueda ) {
 
 // ASYNC AWAIT PARA PODER HACER PETICIONES
 
-const peticionApi = async () => {
+/* verify const peticionApi = async () => {
     const respuesta = await fetch("https://63c27ec1b0c286fbe5ee8771.mockapi.io/FinalJavaScript/ShopIsa/?q=descrip:mate&pageSize=20&page=1")
     const data = await respuesta.json()
     console.log(data)
@@ -131,6 +144,8 @@ peticionApi()
 
 // PODEMOS HACER PETICIONES DESDE UN JSON
 
+/*
+function loadProductos(){
 /*fetch("productos.json")
 .then( res => res.json())
 .then( data => {
@@ -143,11 +158,13 @@ peticionApi()
 
 /*fetch("mockapi.json") */
 
+/*
+function loadProductos(){
 fetch('./json/productos.json')
 .then( res => res.json())
 .then( data => cargarProductos(data))
-
-
+}
+*/
 
 
 // EL FETCH TIENE UNA VERSIÓN DE SUGAR SYNTAX 
@@ -155,7 +172,7 @@ fetch('./json/productos.json')
 // es una versión simplificada de fetch
 
 const cards = (array) => {
-    const nodos = array.reduce(( acc, element) => {
+    const nodos = array.reduce((acc, element) => {
         return acc + `
         <div class="card" id="descrip-${element.descrip}">
             <div class="container-img">
@@ -169,7 +186,7 @@ const cards = (array) => {
             </h3>
         </div>
         `
-    },"")
+    }, "")
     document.querySelector(".contenedorcard").innerHTML = nodos
 }
 
@@ -178,41 +195,43 @@ const personajes = async () => {
     const data = await respuesta.json()
     cards(data.results)  
     const cardsPersonajes = document.querySelectorAll(".card")
-        cardsPersonajes.forEach( elemento => {
-            elemento.onclick = () => {
-                const id = elemento.id.slice(10)
-                const filtrarPersonaje = data.results.filter( elemento => {
-                    return elemento.id === Number(id)
-                } )
-                console.log(filtrarPersonaje)
-            }
-        })  
+    cardsPersonajes.forEach(elemento => {
+        elemento.onclick = () => {
+            const id = elemento.id.slice(10)
+            const filtrarPersonaje = data.results.filter(elemento => {
+                return elemento.id === Number(id)
+            })
+            console.log(filtrarPersonaje)
+        }
+    })  
 }
 
-personajes()
+// verufy personajes()
 
 let paginaSiguiente = 40
 
-document.querySelector("#next").onclick = () => {    
-    if( paginaSiguiente != 42){
-        paginaSiguiente ++
-        document.querySelector("#next")
+function nextPage() {
+    document.querySelector("#next").onclick = () => {
+        if (paginaSiguiente != 42) {
+            paginaSiguiente++
+            document.querySelector("#next")
+        }
+        console.log(paginaSiguiente)
+        fetch(`https://63c27ec1b0c286fbe5ee8771.mockapi.io/FinalJavaScript/ShopIsa?page=${paginaSiguiente}`)
+            .then(res => res.json())
+            .then(data => {
+                cards(data.results)
+            })
+
     }
-    console.log(paginaSiguiente)
-    fetch(`https://63c27ec1b0c286fbe5ee8771.mockapi.io/FinalJavaScript/ShopIsa?page=${paginaSiguiente}`)
-    .then( res => res.json())
-    .then( data => { 
-        cards(data.results)                      
-    })
 }
 
 
-
-
-function Consultar(){
-    let carrito2 = JSON.parse(localStorage.getItem ('carrito2')) || [];
-
+function Consultar() {
+    let carrito2 = JSON.parse(localStorage.getItem('carrito2')) || 
+    [];
+    
     fetch()
-     .then(res => res.json()) 
-     .then(data=>cargarproductos(data));  
+    .then(res => res.json())
+    .then(data => cargarproductos(data));
 }
