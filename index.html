@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://kit.fontawesome.com/df59baf6b8.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
     integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
@@ -75,10 +76,16 @@
   </div>
 
   </div>
-  <form id="filtroProducto">
+  <form id="form-productos">
     <label>
       <input type="text" id="input-busqueda" placeholder="Busque la categoria...">
     </label>
+    <label>
+      <input type="submit" value="Buscar">
+    </label>
+  </form>
+
+  <form id="form-busqueda">
     <label>
       <input type="submit" value="Buscar">
     </label>
@@ -88,8 +95,9 @@
   <button id="borrar-productos">BORRAR TODO EL CARRITO</button>
 
   <div class="container">
-    <div class="row list-product"></div>
+    <div class="row list-product">
 
+    </div>
   </div>
 
 
@@ -103,7 +111,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
-
+  <script defer src="script/productos.js"></script>
   <script defer src="script/cards.js"></script>
 
 
