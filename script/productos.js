@@ -5,6 +5,7 @@ fetch("https://rickandmortyapi.com/api/character/")
 .catch(() => console.log("error"))*/
 
 /* metodo get */
+var ProdsCarrito = [];
 
 const productosHtml = () => {
     const productos = getProductos()
@@ -13,6 +14,7 @@ const productosHtml = () => {
         <p>
             ${elemento.descrip}
         </p>
+        
         `
     }, "")
 
@@ -29,7 +31,7 @@ async function getProductos() {
     return  data;
 }
 
-/* verify 
+/* verify
 
 fetch("https://63c27ec1b0c286fbe5ee8771.mockapi.io/FinalJavaScript/ShopIsa")
     .then(res => res.json())
@@ -116,7 +118,7 @@ const inputProductos = document.querySelector("#input-busqueda")
 formProductos.onsubmit.value = (e) => {
 
     e.preventDefault()
-    peticion(inputProductos.value)    
+    peticion(inputProductos.value)
 }
 
 */
@@ -126,7 +128,7 @@ function peticion(busqueda) {
     .then(data => {
         alert(`El nombre del producto buscado es: ${data.descrip}`)
     })
-    .catch(() => console.log("no se encontro"))    
+    .catch(() => console.log("no se encontro"))
 }
 
 
@@ -151,7 +153,7 @@ function loadProductos(){
 .then( data => {
         data.forEach(element => {
             console.log(element.email)
-        
+
     });
 })   */
 
@@ -167,7 +169,7 @@ fetch('./json/productos.json')
 */
 
 
-// EL FETCH TIENE UNA VERSIÓN DE SUGAR SYNTAX 
+// EL FETCH TIENE UNA VERSIÓN DE SUGAR SYNTAX
 // ASYNC AWAIT
 // es una versión simplificada de fetch
 
@@ -193,7 +195,7 @@ const cards = (array) => {
 const personajes = async () => {
     const respuesta = await fetch("https://63c27ec1b0c286fbe5ee8771.mockapi.io/FinalJavaScript/ShopIsa")
     const data = await respuesta.json()
-    cards(data.results)  
+    cards(data.results)
     const cardsPersonajes = document.querySelectorAll(".card")
     cardsPersonajes.forEach(elemento => {
         elemento.onclick = () => {
@@ -203,7 +205,7 @@ const personajes = async () => {
             })
             console.log(filtrarPersonaje)
         }
-    })  
+    })
 }
 
 // verufy personajes()
@@ -228,10 +230,58 @@ function nextPage() {
 
 
 function Consultar() {
-    let carrito2 = JSON.parse(localStorage.getItem('carrito2')) || 
+    let carrito2 = JSON.parse(localStorage.getItem('carrito2')) ||
     [];
-    
+
     fetch()
     .then(res => res.json())
     .then(data => cargarproductos(data));
+}
+
+
+async function CargarCarrito(id) {
+
+
+    // Aca desde cualquier pagina obtenes el listado de productos del carrito
+    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    console.log(cart);
+;
+    // recorro la lista de todos los productos en general
+    let  listaProductos =  await getProductos();
+
+    // si el id del click del boton coincide con un producto lo agrego a la lista de productos del carrito
+    listaProductos.forEach(producto => {
+        if (producto.id == id) {
+            cart.push(producto);
+        }
+        });
+
+    // cargo la lista actualizadas de productos al carrito.
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+}
+
+async function EliminarProductoCarrito(id) {
+
+    // Aca desde cualquier pagina obtenes el listado de productos del carrito
+    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    console.log(cart);
+    ;
+    let aux = [];
+
+    // si el id del click del boton no coincide lo agrego a la lista dejandome una lista sin el id que elimine
+    cart.forEach(producto => {
+        if (producto.id != id) {
+            aux.push(producto);
+        }
+    });
+
+    // cargo la lista actualizadas de productos al carrito.
+    localStorage.setItem("cart", JSON.stringify(aux));
+
+}
+
+async function VaciarCarrito() {
+    let aux = [];
+    localStorage.setItem("cart", JSON.stringify(aux));
 }

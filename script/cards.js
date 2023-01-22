@@ -17,27 +17,32 @@ async function cardsHtml ( contenedor, filtrarOferta ) {
     let  listaProductos =  await getProductos();
     console.log(listaProductos)
     listaProductos.forEach(producto => {
-        
-        const card = document.createElement("div")
-        /*card.className = "card" */
-        card.className = "card col-md-2 col-lg-2 col-xl-2 mx-auto mb-4"
-        card.id = producto.id
-        card.innerHTML = `
+
+        if (producto.oferta == true) {
+
+            const card = document.createElement("div")
+            /*card.className = "card" */
+            card.className = "card col-md-2 col-lg-2 col-xl-2 mx-auto mb-4"
+            card.id = producto.id
+            card.innerHTML = `
             <div class="container-img">
                 <img src=${producto.img} alt=${producto.descrip}>
             </div>
             <h2>
                 ${producto.descrip}
             </h2><br/>
-            <h2>
-                ${producto.oferta?producto.precio-(producto.precio*(descuento%100)):producto.precio}
-            </h2>
-            <button>Agregar al Carrito</button>
+            <h5>
+               Precio: ${producto.precio}<br/>
+               Descuento: ${producto.descuento}%<br/>
+               Total: ${producto.precio - (producto.precio * producto.descuento / 100)}
+            </h5>
+            <button class="carrito" onclick="CargarCarrito(${producto.id})" id="${producto.id}">Agregar al Carrito</button>
         `
-        contenedor.appendChild(card)
-    });    
+            contenedor.appendChild(card)
+        }
+    });
 
-    console.log("lista de producto cargada")  
+    console.log("lista de producto cargada")
 }
 
 // no va esto
@@ -65,7 +70,7 @@ cardsHtml(contenedor,mostrarOfertas)
             resultado +="nombre : "+listaProductosConsulta.descrip +",   ID: "+listaProductosConsulta.id+",   Precio:"+ precioTemp
         })
         alert("encontramos",resultado)
-        
+
     }else{
         alert("No encontramos","No se econtraron productos con el nombre de "+ productoBuscado.toUpperCase())
     }

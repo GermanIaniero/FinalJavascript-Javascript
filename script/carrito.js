@@ -1,5 +1,6 @@
 let infoDelLs = JSON.parse(localStorage.getItem("carrito"))
 
+
 const cardHtml = ( array ) => {
     const generarNodos = array.reduce(( acc, element) => {
         return acc + `
@@ -23,20 +24,20 @@ const cardHtml = ( array ) => {
 cardHtml(infoDelLs || [])
 
 function borrarDelCarrito (array) {
-    const botonAniadir = document.querySelectorAll(".boton-card")    
+    const botonAniadir = document.querySelectorAll(".boton-card")
     botonAniadir.forEach( boton => {
         boton.onclick = () => {
-            const id = boton.id.slice(6)            
+            const id = boton.id.slice(6)
             const filtrarProducto = array.filter((elemento, i) => {
                 return elemento.id != Number(id)
             })
             infoDelLs = filtrarProducto
             localStorage.setItem("carrito", JSON.stringify(infoDelLs))
-            console.log(infoDelLs)    
+            console.log(infoDelLs)
             cardHtml(infoDelLs)
-            borrarDelCarrito(infoDelLs)       
+            borrarDelCarrito(infoDelLs)
         }
-        
+
     })
 }
 
@@ -86,18 +87,18 @@ let carrito = []
 // para poder hacerlo, utilizamos querySelectorAll , getElementByClassName
 
 function aniadirAlCarrito (array) {
-    const botonAniadir = document.querySelectorAll(".boton-card")    
+    const botonAniadir = document.querySelectorAll(".boton-card")
     botonAniadir.forEach( boton => {
         boton.onclick = () => {
             const id = boton.id.slice(6)
             const filtrarProducto = array.find((elemento) => {
                 return elemento.id === Number(id)
             })
-            carrito.push(filtrarProducto)   
+            carrito.push(filtrarProducto)
             console.log(carrito)
-            localStorage.setItem("carrito", JSON.stringify(carrito))   
+            localStorage.setItem("carrito", JSON.stringify(carrito))
         }
-        
+
     })
 }
 
@@ -115,5 +116,5 @@ function HacerClick() {
       text: "Verifique antes de pagar",
       icon: "info",
       button: "Entendido"
-    }); 
+    });
   }
