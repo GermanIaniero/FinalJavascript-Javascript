@@ -27,7 +27,9 @@
     height:150px;
 }
 
-
+.container-img  img{
+  width:100%;
+  min-height:100px;}
 
 
 * {
