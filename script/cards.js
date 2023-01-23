@@ -1,4 +1,4 @@
-const descuento =0.20
+const descuento = null
 
 const mostrarOfertas = true
 //console.log("the user require the sale product %s",mostrarOfertas)

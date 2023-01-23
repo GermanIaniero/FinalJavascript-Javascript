@@ -777,61 +777,27 @@ img {
     
    
     
-
-
-/*
-
-body.dark{
-  background-color: #1E1E1E;
-  
-}
-
-
-
-body.dark #conten-productos{
-  color: blue;
-  background: rgb(225, 166, 65);
-}
-
-body.dark button{
-  color: blue;
-  background: rgb(154, 236, 82);
-}
-
-body.dark #darkmode{
-  background-position: right center;
-  position: sticky;
-
-
-  
- 
-}
-
-
-header{
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-
-
-
-.dark{
-  display: block;
-  background: url(/img/dark-mode.png) left center;
-  width: 99px;
-  height: 40px;
-  font-size: 0;
-  text-decoration: none;
-
-  margin-left: auto;
-  margin-right: auto;
- 
-  
-}
-
-
-
-
+    
+    .buttonpay {
+      display: inline-block;
+      padding: 15px 25px;
+      font-size: 24px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      color: #fff;
+      background-color: #afa74c;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 9px #999;
+      align-items: center;
+    }
+    
+    .buttonpay:hover {background-color: #3e8e41}
+    
+    .buttonpay:active {
+      background-color: #3e8e41;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }

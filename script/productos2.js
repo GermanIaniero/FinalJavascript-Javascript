@@ -1,4 +1,4 @@
-let url = 'https://63c27ec1b0c286fbe5ee8771.mockapi.io/FinalJavaScript/ShopIsa/';
+/*let url = 'https://63c27ec1b0c286fbe5ee8771.mockapi.io/FinalJavaScript/ShopIsa/';
         fetch(url)
             .then( response => response.json() )
             .then( data => mostrarData(data) )
@@ -21,7 +21,7 @@ let url = 'https://63c27ec1b0c286fbe5ee8771.mockapi.io/FinalJavaScript/ShopIsa/'
 
                 
                 /*body+=`<div class="card col-lg-4 id="${data[i].id}">`  */
-                body+=`<div class="card" id=productos-${data[i].id}>`
+                /*body+=`<div class="card" id=productos-${data[i].id}>`
                 body+=`<div class="container-img">`
                 
                 body+=`<img src="${data[i].img}" width=115>`
@@ -33,7 +33,7 @@ let url = 'https://63c27ec1b0c286fbe5ee8771.mockapi.io/FinalJavaScript/ShopIsa/'
                 body+=`</div>`
                 console.log(body)
                 
-               /* id="12><td>${data[i].id}</td><td>${data[i].producto}</td><td>${data[i].precio}</td><td>${data[i].img}</td><td>${data[i].descrip}<td>${data[i].categoria}<td>${data[i].cantidad}<td>${data[i].oferta}</td><td>${data[i].descuento}</td></td></td></td></card>`*/
+               /* id="12><td>${data[i].id}</td><td>${data[i].producto}</td><td>${data[i].precio}</td><td>${data[i].img}</td><td>${data[i].descrip}<td>${data[i].categoria}<td>${data[i].cantidad}<td>${data[i].oferta}</td><td>${data[i].descuento}</td></td></td></td></card>`
             }
 
 
@@ -68,8 +68,34 @@ let url = 'https://63c27ec1b0c286fbe5ee8771.mockapi.io/FinalJavaScript/ShopIsa/'
 
 
 
-
+/*
 
             document.getElementById('data').innerHTML = body
             //console.log(body)
         }
+
+        let carrito = []
+
+// necesito llamar a todos los botones que van a generar la acción de añadir al carrito
+// para poder hacerlo, utilizamos querySelectorAll , getElementByClassName*/
+
+function aniadirAlCarrito (array) {
+    const botonAniadir = document.querySelectorAll(".boton-card")    
+    botonAniadir.forEach( boton => {
+        boton.onclick = () => {
+            const id = boton.id.slice(6)
+            const filtrarProducto = array.find((elemento) => {
+                return elemento.id === Number(id)
+            })
+            carrito.push(filtrarProducto)   
+            console.log(carrito)
+            localStorage.setItem("carrito", JSON.stringify(carrito))   
+        }
+        
+    })
+}
+
+aniadirAlCarrito(pokemon)
+
+const productosElegidos = JSON.parse(localStorage.getItem("carrito"))
+carrito = productosElegidos || []
